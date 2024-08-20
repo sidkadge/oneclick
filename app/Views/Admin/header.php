@@ -70,7 +70,7 @@
                             <a href="#" class="menu-toggle nav-link has-dropdown"><i
                                     data-feather="briefcase"></i><span>Masters</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?php echo base_url(); ?>Add_Menu">Add Menu</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>Add_company">Add Menu</a></li>
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>Add_submenu">Add sub Menu</a></li>
                             </ul>
                         </li>
