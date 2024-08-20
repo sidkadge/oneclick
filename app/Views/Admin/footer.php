@@ -19,60 +19,32 @@
 
 <script>
 $(document).ready(function() {
-    $('#add_menu_form').validate({
+    $('#add_company').validate({
         rules: {
-            menu_name: {
+            company_name: {
                 required: true,
             },
-            // url_location: {
-            //     required: true,
-            // }
         },
         messages: {
-            menu_name: {
-                required: 'Please enter the menu name.',
+            company_name: {
+                required: 'Please enter the company name.',
             },
-            // url_location: {
-            //     required: 'Please enter the URL location.',
-            // }
         },
+        errorElement: 'span',
         errorPlacement: function(error, element) {
-            if (element.attr("name") == "url_location") {
-                error.appendTo("#menu_nameError");
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-    $('#sub_set_menu').validate({
-        rules: {
-          sub_menu_name: {
-                required: true,
-            },
-            menu_id: {
-                required: true,
-            },
-         
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
         },
-        messages: {
-          sub_menu_name: {
-                required: 'Please enter the sub menu name.',
-            },
-            menu_id: {
-                required: 'Please select menu name.',
-            },
-
+        highlight: function(element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
         },
-        errorPlacement: function(error, element) {
-            if (element.attr("name") == "url_location") {
-                error.appendTo("#menu_nameError");
-            } else {
-                error.insertAfter(element);
-            }
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
         }
     });
 });
 </script>
+
 
 </body>
 </html>

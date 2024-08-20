@@ -7,3 +7,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('Employeedashboard', 'Home::Employeedashboard');
+$routes->get('Add_company', 'Home::Add_company');
+$routes->post('add_company', 'Home::Add_companynames');
