@@ -20,4 +20,15 @@ class RegisterModel extends Model
         }
         return $data;
     }
+
+    public function checkCredentials($where)
+    {
+        $user = $this->table('tbl_register') // Set the table explicitly
+                     ->where($where)
+                     ->first();
+        if ($user) {
+            return $user; // Login successful
+        }
+        return null; // Login failed
+    }
 }

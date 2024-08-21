@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>One Click</title>
+    <title>One Tap</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="public/assets/css/app.min.css">
     <link rel="stylesheet" href="public/assets/bundles/bootstrap-social/bootstrap-social.css">
@@ -26,7 +26,7 @@
 
 .card-header img {
     max-width: 100px;
-    margin-bottom: 10px;
+
 }
 
 .card-header h4 {
@@ -48,13 +48,13 @@
                         class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
                         <div class="card card-primary">
                             <div class="card-header text-center">
-                                <img src="public/assets/img/One_click.png" alt="Logo"
-                                    style="max-width: 100px; margin-bottom: 10px;">
+                                <img src="public/assets/img/OneTap1.png" alt="Logo"
+                                    style="max-width: 470px; margin-bottom: -60px; margin-top: -70px;">
                                 <h4>Login</h4>
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="#" class="needs-validation" novalidate="">
+                                <form method="POST" action="<?= base_url('auth_login') ?>" class="needs-validation" novalidate="">
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input id="email" type="email" class="form-control" name="email" tabindex="1"

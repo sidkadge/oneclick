@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>One Click</title>
+    <title>One Tap</title>
     <link rel="stylesheet" href="public/assets/css/app.min.css">
     <link rel="stylesheet" href="public/assets/bundles/jquery-selectric/selectric.css">
     <link rel="stylesheet" href="public/assets/css/style.css">
@@ -46,8 +46,8 @@
                         class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
                         <div class="card card-primary">
                             <div class="card-header text-center">
-                                <img src="public/assets/img/One_click.png" alt="Logo"
-                                    style="max-width: 100px; margin-bottom: 10px;">
+                                <img src="public/assets/img/OneTap1.png" alt="Logo"
+                                style="max-width: 470px; margin-bottom: -60px; margin-top: -70px;">
                                 <h4>Register</h4>
                             </div>
 
