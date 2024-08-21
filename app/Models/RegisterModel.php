@@ -23,12 +23,38 @@ class RegisterModel extends Model
 
     public function checkCredentials($where)
     {
-        $user = $this->table('tbl_register') // Set the table explicitly
+        $user = $this->table('tbl_register') 
                      ->where($where)
                      ->first();
         if ($user) {
-            return $user; // Login successful
+            return $user; 
         }
-        return null; // Login failed
+        return null; 
     }
+
+    public function saveEmployee(array $employeeData)
+    {
+       
+        if (!$this->insert($employeeData)) {
+            return false; 
+        
+        $registeredId = $this->getInsertID(); 
+      
+        $employeeData['registered_id'] = $registeredId;
+        $this->setTable('tbl_employees');
+
+        $this->setAllowedFields([
+            'registered_id', 'frist_name', 'last_name', 'email', 'password' ,'mobile', 'present_address', 'permanent_address',
+            'account_no', 'ifsc_code', 'aadhar_no', 'gross_salary', 'company_name', 'department',
+            'pf_no', 'esi_no', 'employee_photo', 'aadhar_card_photo', 'account_passbook_photo'
+        ]);
+
+        if (!$this->insert($employeeData)) {
+            return false; 
+        }
+
+        return true; 
+    }
+
+}
 }
