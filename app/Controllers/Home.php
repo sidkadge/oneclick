@@ -61,6 +61,10 @@ class Home extends BaseController
 
     public function AdminDashboard()
     {
+        $session = \Config\Services::session();
+        if (!$session->has('id')) {
+            return redirect()->to('/');
+        }
         echo view('Admin/Dashboard');
     }
     public function register()
@@ -93,6 +97,10 @@ class Home extends BaseController
 
     public function Add_company()
     {
+        $session = \Config\Services::session();
+        if (!$session->has('id')) {
+            return redirect()->to('/');
+        }
         echo view('Admin/Addcompony');
     }
     public function Add_companynames()
@@ -106,6 +114,14 @@ class Home extends BaseController
      
         // Insert data into the database table
         $db->table('tbl_company_master')->insert($data);
-        return redirect()->to('Add_submenu');
+        return redirect()->to('Add_company');
     }
+    public function logout()
+{
+    $session = session();
+    // session_destroy();
+    $session->destroy();
+    // print_r($_SESSION);die;
+    return redirect()->to('/');
+}
 }

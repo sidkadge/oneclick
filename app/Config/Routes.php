@@ -14,3 +14,4 @@ $routes->get('Employeedashboard', 'Home::Employeedashboard');
 $routes->get('Add_company', 'Home::Add_company');
 $routes->post('add_company', 'Home::Add_companynames');
 $routes->get('AdminDashboard', 'Home::AdminDashboard');
+$routes->get('logout', 'Home::logout');
