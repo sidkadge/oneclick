@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Otika - Admin Dashboard Template</title>
+    <title>One Tap</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="public/assets/css/app.min.css">
     <!-- Template CSS -->
@@ -56,8 +56,8 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="index.html"> <img alt="image" src="public/assets/img/logo.png" class="header-logo" />
-                            <span class="logo-name">Otika</span>
+                        <a href="index.html"> <img alt="image" src="public/assets/img/OneTap1.png" class="header-logo" />
+                            <span class="logo-name">One Tap</span>
                         </a>
                     </div>
                     <ul class="sidebar-menu">
@@ -71,6 +71,8 @@
                                     data-feather="briefcase"></i><span>Masters</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>Add_company">Add Menu</a></li>
+                                <li><a class="nav-link" href="<?php echo base_url(); ?>Add_Employee">Add Employee</a></li>
+
                                 <li><a class="nav-link" href="<?php echo base_url(); ?>Add_submenu">Add sub Menu</a></li>
                             </ul>
                         </li>
