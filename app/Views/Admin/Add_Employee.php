@@ -100,7 +100,13 @@
                                     <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Enter password" required>
                                 </div>
-                           
+                                <div class="col-lg-4 col-md-4 col-12 form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" name="dob" class="form-control" id="dob"
+                                        placeholder="Enter date of birth">
+                                </div>
+
+
                                 <div class="col-lg-6 col-md-6 col-12 form-group">
                                     <label for="present_address">Present Address</label>
                                     <input type="text" name="present_address" class="form-control" id="present_address"

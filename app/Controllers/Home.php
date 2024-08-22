@@ -131,6 +131,7 @@ public function Add_Employee(){
 }
 public function saveEmployee()
 {
+    $db = \Config\Database::connect();
     $registerModel = new RegisterModel();
     $email = $this->request->getPost('email');
 
@@ -141,16 +142,15 @@ public function saveEmployee()
 
     $uploadPaths = [
         'employee_photo' => 'public/uploads/photos/',
-        'aadhar_card_photo' => 'public/uploads/aadhar/',
-        'account_passbook_photo' => 'public/uploads/passbooks/',
+        'aadhaar_photo' => 'public/uploads/aadhar/',
+        'passbook_photo' => 'public/uploads/passbooks/',
     ];
 
     $employeeData = [
-        'name' => $this->request->getPost('name'),
+        'frist_name' => $this->request->getPost('frist_name'),
         'last_name' => $this->request->getPost('last_name'),
         'email' => $this->request->getPost('email'),
         'mobile' => $this->request->getPost('mobile'),
-        'password' => $this->request->getPost('password'),
         'present_address' => $this->request->getPost('present_address'),
         'permanent_address' => $this->request->getPost('permanent_address'),
         'account_no' => $this->request->getPost('account_number'),
@@ -161,42 +161,45 @@ public function saveEmployee()
         'department' => $this->request->getPost('department'),
         'pf_no' => $this->request->getPost('pf_no'),
         'esi_no' => $this->request->getPost('esi_no'),
+        'dob' => $this->request->getPost('dob'),
     ];
 
-    // Handle file uploads
-    $uploads = ['employee_photo', 'aadhar_card_photo', 'account_passbook_photo'];
+    $uploads = ['employee_photo', 'aadhaar_photo', 'passbook_photo'];
 
     foreach ($uploads as $fileKey) {
         $file = $this->request->getFile($fileKey);
 
-        if ($file->isValid() && !$file->hasMoved()) {
+        if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
             $file->move($uploadPaths[$fileKey], $newName);
-            $employeeData[$fileKey] = $newName; // Store the new file name in the data array
+            $employeeData[$fileKey] = $newName; 
+        } else {
+            $employeeData[$fileKey] = null; 
         }
     }
-
-    // Insert employee data
-    if (!$registerModel->insert($employeeData)) {
-        return redirect()->back()->withInput()->with('error', 'Failed to add employee');
-    }
-
+   
     // Prepare data array for registration
     $registerData = [
-        'frist_name' => $this->request->getPost('name'),
+        'frist_name' => $this->request->getPost('frist_name'),
         'last_name' => $this->request->getPost('last_name'),
         'email' => $this->request->getPost('email'),
         'password' => $this->request->getPost('password'),
-        'role' => 'employee' // Assuming default role for employees
+        'role' => 'employee' 
     ];
 
-    // Insert registration data
-    if (!$registerModel->insert($registerData)) {
-        return redirect()->back()->withInput()->with('error', 'Failed to register employee');
-    }
+    // Insert registration data into tbl_register and get the ID
+    $db->table('tbl_register')->insert($registerData);
+    $registeredId = $db->insertID();  // Get the inserted ID
 
-    return redirect()->to('employee/list')->with('success', 'Employee added and registered successfully');
+    // Set registered_id in employee data
+    $employeeData['registered_id'] = $registeredId;
+
+    // Insert employee data into tbl_employees
+    $db->table('tbl_employees')->insert($employeeData);
+
+    return redirect()->to('Add_Employee');
 }
+
 
 
 

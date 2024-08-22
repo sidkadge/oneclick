@@ -34,27 +34,32 @@ class RegisterModel extends Model
 
     public function saveEmployee(array $employeeData)
     {
-       
+        // Insert data into the registration table
         if (!$this->insert($employeeData)) {
             return false; 
-        
-        $registeredId = $this->getInsertID(); 
-      
+        }
+
+        // Get the ID of the newly registered employee
+        $registeredId = $this->getInsertID();
+
+        // Add the registered ID to the employee data
         $employeeData['registered_id'] = $registeredId;
+
+        // Switch to the employees table
         $this->setTable('tbl_employees');
 
+        // Define the allowed fields for the employees table
         $this->setAllowedFields([
-            'registered_id', 'frist_name', 'last_name', 'email', 'password' ,'mobile', 'present_address', 'permanent_address',
+            'registered_id', 'frist_name', 'last_name', 'email', 'password', 'mobile', 'present_address', 'permanent_address',
             'account_no', 'ifsc_code', 'aadhar_no', 'gross_salary', 'company_name', 'department',
-            'pf_no', 'esi_no', 'employee_photo', 'aadhar_card_photo', 'account_passbook_photo'
+            'pf_no', 'esi_no', 'employee_photo', 'aadhaar_photo', 'passbook_photo','dob'
         ]);
 
+        // Insert the data into the employees table
         if (!$this->insert($employeeData)) {
             return false; 
         }
 
         return true; 
     }
-
-}
 }
